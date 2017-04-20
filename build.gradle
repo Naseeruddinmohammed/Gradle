@@ -1,0 +1,38 @@
+task hello {
+   doLast {
+      println 'tutorialspoint'
+   }
+}
+
+task upper << {
+	String expString = 'Tutorial Point'
+	println "Original: "+expString
+	println "Upper case: "+expString.toUpperCase()
+}
+task count << {
+	5.times{
+	println "$it"
+}
+}
+
+task groovy <<{}
+
+class JavaGreeter {
+	public static void sayHello() {
+		System.out.println ("Hello Java");
+}
+}
+
+JavaGreeter  greeter = new JavaGreeter()
+greeter.sayHello()
+
+task groovy1 << {}
+def doubleIt(n) {
+  n + n //Note we don't need a return statement
+}
+
+def foo =5
+println "doubleIt($foo) = ${doubleIt(foo)}"
+
+foo = "foobar"
+println "doubleIt($foo) = ${doubleIt(foo)}"
