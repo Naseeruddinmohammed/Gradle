@@ -1,0 +1,18 @@
+project.task("myTask1")
+
+/*
+
+Since the entire build script delegates to `project`, we can leave that
+off.
+
+*/
+
+task("myTask2")
+
+task "myTask3"
+task myTask4
+myTask4.description = "This is what's shown in the task list"
+myTask4.group = "This is the heading for this task in the task list,"
+
+myTask4.doLast {println "Do this last"}
+myTask4.doFirst {println "Do this first"}

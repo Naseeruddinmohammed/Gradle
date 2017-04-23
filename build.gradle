@@ -1,38 +1,83 @@
-task hello {
-   doLast {
-      println 'tutorialspoint'
-   }
+// task hello {
+//    doLast {
+//       println 'tutorialspoint'
+//    }
+// }
+//
+// task upper << {
+// 	String expString = 'Tutorial Point'
+// 	println "Original: "+expString
+// 	println "Upper case: "+expString.toUpperCase()
+// }
+// task count << {
+// 	5.times{
+// 	println "$it"
+// }
+// }
+//
+// task groovy <<{}
+//
+// class JavaGreeter {
+// 	public static void sayHello() {
+// 		System.out.println ("Hello Java");
+// }
+// }
+//
+// JavaGreeter  greeter = new JavaGreeter()
+// greeter.sayHello()
+//
+// task groovy1 << {}
+// def doubleIt(n) {
+//   n + n //Note we don't need a return statement
+// }
+//
+// def foo =5
+// println "doubleIt($foo) = ${doubleIt(foo)}"
+//
+// foo = "foobar"
+// println "doubleIt($foo) = ${doubleIt(foo)}"
+//
+
+// task groovy2 {
+//   doLast{
+//
+//   }
+// }
+//
+// def noArgs() {
+//     println "Called no arg fuction"
+// }
+//
+// def oneArg(x){
+//   println "called the 1 args fuction with $x "
+//
+// }
+// def twoArgs(x, y){
+//   println "called the 2 args function with $x and $y"
+//   x + y
+//
+// }
+// twoArgs 500, 300
+
+task groovy {
+  doLast{
+    
+  }
+}
+def doubleIt = { x -> x + x}
+
+/*
+
+Groovy also allows for higher order functions. That is, functions that take
+functions as arguments. Let's make a function that applies another function
+twice.
+
+*/
+
+def applyTwice(func, arg){
+    func(func(arg))
 }
 
-task upper << {
-	String expString = 'Tutorial Point'
-	println "Original: "+expString
-	println "Upper case: "+expString.toUpperCase()
-}
-task count << {
-	5.times{
-	println "$it"
-}
-}
-
-task groovy <<{}
-
-class JavaGreeter {
-	public static void sayHello() {
-		System.out.println ("Hello Java");
-}
-}
-
-JavaGreeter  greeter = new JavaGreeter()
-greeter.sayHello()
-
-task groovy1 << {}
-def doubleIt(n) {
-  n + n //Note we don't need a return statement
-}
-
-def foo =5
-println "doubleIt($foo) = ${doubleIt(foo)}"
-
-foo = "foobar"
-println "doubleIt($foo) = ${doubleIt(foo)}"
+def foo = 5
+def fooDoubledTwice = applyTwice(doubleIt, foo)
+println "Applying doubleIt twice to $foo equals $fooDoubledTwice"

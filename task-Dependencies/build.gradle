@@ -1,0 +1,50 @@
+task putOnSocks {     //Depends On
+  doLast {
+      println "Putting on Socks"
+  }
+}
+task putOnShoes {
+  dependsOn "putOnSocks"
+  doLast {
+    println "Putting on shoes"
+  }
+}
+
+
+//Finalize By
+
+task eatBreakfast {
+    finalizedBy "brushYourTeeth"
+    doLast{
+        println "Om nom nom breakfast!"
+    }
+}
+
+task brushYourTeeth {
+    doLast {
+        println "Brushie Brushie Brushie."
+    }
+}
+
+
+// RunAfter
+task takeShower {
+    doLast {
+        println "Taking a shower."
+    }
+}
+
+task putOnFragrance {
+    shouldRunAfter "takeShower"
+    doLast{
+        println "Smellin' fresh!"
+    }
+}
+
+// Depending on multiple task
+task getReady {
+    // Remember that when assigning a collection to a property, we need the
+    // equals sign
+    dependsOn = ["takeShower", "eatBreakfast", "putOnShoes"]
+}
+putOnShoes.mustRunAfter takeShower
